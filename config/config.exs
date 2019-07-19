@@ -15,7 +15,10 @@ config :lagerbehandler, LagerbehandlerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wYOaTtxgIcL4rlHgW7PCo4OW7DWC/mVuNNJoTQjRHhRiaodrFUGb47y0dNbwWlQl",
   render_errors: [view: LagerbehandlerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Lagerbehandler.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Lagerbehandler.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "bpMydJdiLJX1C2zrNhdy6UebCoiQGh6E"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,6 +27,13 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :phoenix, :template_engines, leex: Phoenix.LiveView.Engine
+
+config :ueberauth, Ueberauth,
+  providers: [
+    auth0: {Ueberauth.Strategy.Auth0, [otp_app: :lagerbehandler]}
+  ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

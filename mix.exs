@@ -20,6 +20,7 @@ defmodule Lagerbehandler.MixProject do
   def application do
     [
       mod: {Lagerbehandler.Application, []},
+      applications: [:logger, :ueberauth],
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -42,7 +43,9 @@ defmodule Lagerbehandler.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:ueberauth, "~> 0.6"}
     ]
   end
 
