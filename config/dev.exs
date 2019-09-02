@@ -11,6 +11,11 @@ config :lagerbehandler, LagerbehandlerWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
+  protocol_options: [
+    max_header_name_length: 64,
+    max_header_value_length: 140_096,
+    max_headers: 100
+  ],
   watchers: [
     node: [
       "node_modules/webpack/bin/webpack.js",
@@ -52,7 +57,8 @@ config :lagerbehandler, LagerbehandlerWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/lagerbehandler_web/views/.*(ex)$},
-      ~r{lib/lagerbehandler_web/templates/.*(eex)$}
+      ~r{lib/lagerbehandler_web/templates/.*(eex)$},
+      ~r{lib/lagerbehandler_web/live/.*(ex)$}
     ]
   ]
 
