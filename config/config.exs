@@ -15,7 +15,10 @@ config :lagerbehandler, LagerbehandlerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "wYOaTtxgIcL4rlHgW7PCo4OW7DWC/mVuNNJoTQjRHhRiaodrFUGb47y0dNbwWlQl",
   render_errors: [view: LagerbehandlerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Lagerbehandler.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Lagerbehandler.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "764GVE1APtdz3WHB/Osx6JSeWyFtDE08"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
