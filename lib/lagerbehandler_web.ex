@@ -20,7 +20,7 @@ defmodule LagerbehandlerWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: LagerbehandlerWeb
-
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
       import Plug.Conn
       import LagerbehandlerWeb.Gettext
       alias LagerbehandlerWeb.Router.Helpers, as: Routes
@@ -39,6 +39,8 @@ defmodule LagerbehandlerWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
+
       import LagerbehandlerWeb.ErrorHelpers
       import LagerbehandlerWeb.Gettext
       alias LagerbehandlerWeb.Router.Helpers, as: Routes
@@ -48,6 +50,7 @@ defmodule LagerbehandlerWeb do
   def router do
     quote do
       use Phoenix.Router
+      import Phoenix.LiveView.Router
       import Plug.Conn
       import Phoenix.Controller
     end
