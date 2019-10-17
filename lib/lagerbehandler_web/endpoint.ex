@@ -1,6 +1,8 @@
 defmodule LagerbehandlerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :lagerbehandler
 
+  socket "/live", Phoenix.LiveView.Socket, websocket: true
+
   socket "/socket", LagerbehandlerWeb.UserSocket,
     websocket: true,
     longpoll: false

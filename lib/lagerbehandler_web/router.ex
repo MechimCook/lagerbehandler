@@ -1,5 +1,6 @@
 defmodule LagerbehandlerWeb.Router do
   use LagerbehandlerWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,7 @@ defmodule LagerbehandlerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/snake", PageController, :snake
   end
 
   # Other scopes may use custom stacks.
