@@ -31,8 +31,6 @@ defmodule LagerbehandlerWeb.SessionController do
   # docs are not applicable here
 
   defp login_reply({:ok, user}, conn) do
-    IO.puts("hello")
-
     conn
     |> put_flash(:info, "Welcome back!")
     # This module's full name is Lagerbehandler.UserManager.Guardian.Plug,
@@ -44,8 +42,6 @@ defmodule LagerbehandlerWeb.SessionController do
   # docs are not applicable here.
 
   defp login_reply({:error, reason}, conn) do
-    IO.puts("hi")
-
     conn
     |> put_flash(:error, to_string(reason))
     |> new(%{})
