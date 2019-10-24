@@ -10,6 +10,10 @@ use Mix.Config
 config :lagerbehandler,
   ecto_repos: [Lagerbehandler.Repo]
 
+config :lagerbehandler, Lagerbehandler.UserManager.Guardian,
+  issuer: "Lagerbehandler",
+  secret_key: "Cm6mAgEvYhtfdLGeI/u89BJ/y/+WIXdPok+1kfmRrPYU+ZE0+LoHMP3J5JMSNlc1"
+
 # Configures the endpoint
 config :lagerbehandler, LagerbehandlerWeb.Endpoint,
   url: [host: "localhost"],
