@@ -5,6 +5,8 @@ defmodule Lagerbehandler.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :username, :string
       add :password, :string
+      add :admin, :boolean
+      add :departments, :string
 
       timestamps()
     end

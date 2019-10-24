@@ -5,6 +5,8 @@ defmodule Lagerbehandler.UserManager.User do
   schema "users" do
     field :password, :string
     field :username, :string
+    field :admin, :boolean
+    field :departments, :string
 
     timestamps()
   end
@@ -13,7 +15,7 @@ defmodule Lagerbehandler.UserManager.User do
 
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :password])
+    |> cast(attrs, [:username, :password, :admin, :departments])
     |> validate_required([:username, :password])
     |> put_password_hash()
   end
