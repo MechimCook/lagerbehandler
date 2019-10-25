@@ -37,6 +37,7 @@ defmodule LagerbehandlerWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/protected", PageController, :protected
+    get "/admin", PageController, :admin
   end
 
   # Other scopes may use custom stacks.

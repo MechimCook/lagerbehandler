@@ -16,8 +16,8 @@ defmodule LagerbehandlerWeb.SessionController do
   end
 
   def login(conn, %{"user" => %{"username" => username, "password" => password}}) do
-    this = UserManager.authenticate_user(username, password)
-    login_reply(this, conn)
+    UserManager.authenticate_user(username, password)
+    |> login_reply(conn)
   end
 
   def logout(conn, _) do
