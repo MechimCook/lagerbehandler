@@ -45,7 +45,10 @@ defmodule Lagerbehandler.MixProject do
       {:plug_cowboy, "~> 2.0"},
       # auth
       {:guardian, "~> 1.2"},
-      {:argon2_elixir, "~> 2.0"}
+      {:argon2_elixir, "~> 2.0"},
+      # liveview
+      {:phoenix_live_view, "~> 0.3.0"},
+      {:floki, ">= 0.0.0", only: :test}
     ]
   end
 
