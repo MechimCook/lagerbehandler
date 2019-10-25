@@ -103,5 +103,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 
 ## current todo
-  * add department and admin field
-  * repurpose /protected to /admin as a liveview to admin view to add users
+  * mod admin page to
+    * see all users
+    * add/delete users
+    * modify user department/ make users admin
