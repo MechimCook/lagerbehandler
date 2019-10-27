@@ -11,6 +11,16 @@ defmodule Lagerbehandler.UserManager do
   alias Argon2
   import Ecto.Query, only: [from: 2]
 
+  @topic inspect(__MODULE__)
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Lagerbehandler.PubSub, @topic)
+  end
+
+  def subscribe(user_id) do
+    Phoenix.PubSub.subscribe(Lagerbehandler.PubSub, @topic <> "#{user_id}")
+  end
+
   def authenticate_user(username, plain_text_password) do
     query = from u in User, where: u.username == ^username
 
@@ -88,4 +98,12 @@ defmodule Lagerbehandler.UserManager do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  defp notify_subscribers({:ok, result}, event) do
+    Phoenix.PubSub.broadcast(Demo.PubSub, @topic, {__MODULE__, event, result})
+    Phoenix.PubSub.broadcast(Demo.PubSub, @topic <> "#{result.id}", {__MODULE__, event, result})
+    {:ok, result}
+  end
+
+  defp notify_subscribers({:error, reason}, _event), do: {:error, reason}
 end

@@ -1,5 +1,6 @@
 defmodule LagerbehandlerWeb.Router do
   use LagerbehandlerWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
