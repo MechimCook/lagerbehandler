@@ -36,12 +36,12 @@
       <td><%= user.admin %></td>
 
       <td>
-      <%= link "Show", to: Routes.page_path(@socket, :index) %>
-      <%= link "Edit", to: Routes.page_path(@socket, :index) %>
+      <%= link "Show", to: Routes.user_path(@socket, :show, user.id) %>
+      <%= link "Edit", to: Routes.user_path(@socket, :edit, user.id) %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New User", to: Routes.page_path(@socket, :index) %></span>
+<span><%= link "New User", to: Routes.user_path(@socket, :create) %></span>

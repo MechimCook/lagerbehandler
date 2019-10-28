@@ -39,6 +39,8 @@ defmodule LagerbehandlerWeb.Router do
 
     get "/protected", PageController, :protected
     get "/admin", PageController, :admin
+
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.

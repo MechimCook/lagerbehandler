@@ -103,7 +103,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 
 ## current todo
-  * mod admin page to
-    * see all users
-    * add/delete users
-    * modify user department/ make users admin
+  * move admin page to user page
+  * modify templates
+  * allow delete users on show page
