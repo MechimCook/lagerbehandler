@@ -13,6 +13,14 @@
   <%= text_input f, :password %>
   <%= error_tag f, :password %>
 
+  <%= label f, :department %>
+  <%= text_input f, :departments %>
+  <%= error_tag f, :departments %>
+
+  <%= label f, :admin %>
+  <%= text_input f, :admin %>
+  <%= error_tag f, :admin %>
+
   <div>
     <%= submit "Save" %>
   </div>
