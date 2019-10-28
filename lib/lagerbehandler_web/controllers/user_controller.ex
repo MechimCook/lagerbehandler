@@ -3,10 +3,10 @@ defmodule LagerbehandlerWeb.UserController do
 
   alias Lagerbehandler.UserManager
   alias Lagerbehandler.UserManager.User
+  alias Phoenix.LiveView
 
   def index(conn, _params) do
-    users = UserManager.list_users()
-    render(conn, "index.html", users: users)
+    LiveView.Controller.live_render(conn, LagerbehandlerWeb.Live.UserView, session: %{})
   end
 
   def new(conn, _params) do

@@ -104,5 +104,5 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## current todo
   * move admin page to user page
-  * modify templates
+  * modify form for departments to be a drop box and for admin to be checkbox
   * allow delete users on show page

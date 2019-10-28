@@ -1,0 +1,48 @@
+<h1>Listing Users</h1>
+
+<%= if assigns[:online_users] do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for {user_key, %{metas: metas}} <- assigns[:online_users] do %>
+        <tr>
+          <td><%= user_key %> (<%= length(metas) %>)</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>department</th>
+      <th>admin</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.departments %></td>
+      <td><%= user.admin %></td>
+
+      <td>
+        <%= link "Show", to: Routes.user_path(@socket, :show, user) %>
+        <%= link "Edit", to: Routes.user_path(@socket, :edit, user) %>
+        <%= link "Delete", to: Routes.user_path(@socket, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User", to: Routes.user_path(@socket, :new) %></span>
