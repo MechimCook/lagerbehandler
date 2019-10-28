@@ -4,7 +4,7 @@ defmodule LagerbehandlerWeb.PageController do
   alias Phoenix.LiveView
 
   def admin(conn, _) do
-    LiveView.Controller.live_render(conn, LagerbehandlerWeb.AdminView, session: %{})
+    LiveView.Controller.live_render(conn, LagerbehandlerWeb.Live.AdminView, session: %{})
   end
 
   def index(conn, _params) do

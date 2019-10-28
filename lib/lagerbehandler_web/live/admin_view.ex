@@ -1,4 +1,4 @@
-defmodule LagerbehandlerWeb.AdminView do
+defmodule LagerbehandlerWeb.Live.AdminView do
   use Phoenix.LiveView
 
   def mount(_session, socket) do
