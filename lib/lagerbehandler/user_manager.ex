@@ -83,16 +83,19 @@ defmodule Lagerbehandler.UserManager do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+    |> notify_subscribers([:user, :created])
   end
 
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
     |> Repo.update()
+    |> notify_subscribers([:user, :updated])
   end
 
   def delete_user(%User{} = user) do
     Repo.delete(user)
+    |> notify_subscribers([:user, :deleted])
   end
 
   def change_user(%User{} = user) do
@@ -100,8 +103,14 @@ defmodule Lagerbehandler.UserManager do
   end
 
   defp notify_subscribers({:ok, result}, event) do
-    Phoenix.PubSub.broadcast(Demo.PubSub, @topic, {__MODULE__, event, result})
-    Phoenix.PubSub.broadcast(Demo.PubSub, @topic <> "#{result.id}", {__MODULE__, event, result})
+    Phoenix.PubSub.broadcast(Lagerbehandler.PubSub, @topic, {__MODULE__, event, result})
+
+    Phoenix.PubSub.broadcast(
+      Lagerbehandler.PubSub,
+      @topic <> "#{result.id}",
+      {__MODULE__, event, result}
+    )
+
     {:ok, result}
   end
 
