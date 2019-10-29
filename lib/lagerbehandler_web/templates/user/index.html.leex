@@ -34,12 +34,10 @@
       <td><%= user.username %></td>
       <td><%= user.departments %></td>
       <td><%= user.admin %></td>
-      <td><%= user.id %></td>
 
       <td>
-        <%= link "Show", to: Routes.user_path(@socket, :show, user) %>
+      <%= link "Show", to: Routes.user_path(@socket, :show, user) %>
         <%= link "Edit", to: Routes.user_path(@socket, :edit, user) %>
-        <%= link "Delete", to: Routes.user_path(@socket, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
         <button phx-click="delete_user" value = <%= user.id %>>Delete</button>
       </td>
     </tr>
