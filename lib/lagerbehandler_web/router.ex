@@ -23,10 +23,14 @@ defmodule LagerbehandlerWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :admin do
+    plug LagerbehandlerWeb.Plugs.Admin
+  end
+
   scope "/", LagerbehandlerWeb do
     pipe_through [:browser, :auth]
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
 
     get "/login", SessionController, :new
     post "/login", SessionController, :login
@@ -38,9 +42,14 @@ defmodule LagerbehandlerWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
 
     get "/protected", PageController, :protected
-    get "/admin", PageController, :admin
 
-    resources "/users", UserController
+    scope "/admin" do
+      pipe_through [:admin]
+
+      get "/", PageController, :admin
+
+      resources "/users", UserController
+    end
   end
 
   # Other scopes may use custom stacks.
