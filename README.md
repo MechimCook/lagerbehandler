@@ -104,4 +104,4 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## current todo
   * modify form for departments to be a drop box and for admin to be checkbox
-  * allow to reset password and not displaying encrypted password
+  * allow to reset password on index
