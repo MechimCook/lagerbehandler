@@ -48,7 +48,12 @@ defmodule LagerbehandlerWeb.Router do
 
       get "/", PageController, :admin
 
-      resources "/users", UserController
+      live "/users", UserLive.Index
+      live "/users/new", UserLive.New
+      live "/users/:id", UserLive.Show, session: [:path_params]
+      live "/users/:id/edit", UserLive.Edit, session: [:path_params]
+
+      resources "/plain/users", UserController
     end
   end
 

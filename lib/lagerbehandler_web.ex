@@ -23,7 +23,7 @@ defmodule LagerbehandlerWeb do
 
       import Plug.Conn
       import LagerbehandlerWeb.Gettext
-      import Phoenix.LiveView.Controller
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
       alias LagerbehandlerWeb.Router.Helpers, as: Routes
     end
   end
