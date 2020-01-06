@@ -103,5 +103,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 
 ## current todo
-  * modify form for departments to be a drop box and for admin to be checkbox
   * allow to reset password on index
+    * api route to reset password
+    * hit api route on edit view
