@@ -11,12 +11,15 @@ defmodule Lagerbehandler.UserManager.User do
     timestamps()
   end
 
+  @departments ["admin"]
+
   alias Argon2
 
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:username, :password, :admin, :departments])
     |> validate_required([:username, :password])
+    |> validate_department(:departments)
     |> put_password_hash()
   end
 
@@ -27,4 +30,14 @@ defmodule Lagerbehandler.UserManager.User do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+  def validate_department(changeset, field, options \\ []) do
+    validate_change(changeset, field, fn :departments, department ->
+      if Enum.member?(@departments, department) do
+        []
+      else
+        [departments: "invalaid department"]
+      end
+    end)
+  end
 end
