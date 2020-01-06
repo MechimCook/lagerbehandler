@@ -5,16 +5,18 @@
     </div>
   <% end %>
 
+
   <%= label f, :username %>
   <%= text_input f, :username %>
   <%= error_tag f, :username %>
 
   <%= label f, :department %>
-  <%= text_input f, :departments %>
+  <%= select f, :department, ["admin"] %>
   <%= error_tag f, :departments %>
 
   <%= label f, :admin %>
-  <%= text_input f, :admin %>
+  <%= radio_button f, :admin, true %> yes
+  <%= radio_button f, :admin, false %> no
   <%= error_tag f, :admin %>
 
   <div>
